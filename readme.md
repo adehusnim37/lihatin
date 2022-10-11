@@ -28,7 +28,7 @@
 - Statistik jumlah pengunjung link
 
 ## Sneak Peek of Home Page 🙈 :
-![image](https://user-images.githubusercontent.com/49114801/195119600-25acfc90-0445-4250-ab32-4c4b6ee6907c.png)
+![image](https://user-images.githubusercontent.com/49114801/195119773-4ca7411f-f8fa-4e0e-bf10-c743bb7f9354.png)
 
 ## Instalasi:
 1. Clone repository.
