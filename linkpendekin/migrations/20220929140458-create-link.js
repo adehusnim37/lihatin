@@ -45,7 +45,7 @@ module.exports = {
         table: 'Users',
         field: 'id',
       },
-      onDelete: 'cascade',
+      onDelete: 'cascade', //jika data dihapus, maka kolom yang berelasi terhapus
     })
   },
   async down(queryInterface, Sequelize) {

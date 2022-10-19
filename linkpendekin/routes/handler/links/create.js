@@ -4,6 +4,7 @@ const v = new Validator();
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
 const QRCode = require('qrcode');
+const Base64 = require('../../../base64/base64')
 
 module.exports = async (req, res) => {
     console.log(req.body);
@@ -19,6 +20,14 @@ module.exports = async (req, res) => {
             status: 'error',
             message: validate,
         });
+    }
+
+    function StringGen(len) {
+        var text = "";
+        for (var i = 0; i < len; i++) {
+            text += hasil.charAt(Math.floor(Math.random() * hasil.length));
+        }
+        return text;
     }
 
     let { url, short } = req.body;
@@ -38,7 +47,13 @@ module.exports = async (req, res) => {
             });
         }
     } else {
-        short = Math.random().toString(36).substring(2, 7);
+        hasil = Base64.encode(url)
+        console.log(hasil)
+        for (var i = 0; i < 1; i++) {
+            var hasilAlgo = `${StringGen(Math.random() * (5 - 2) + 2)}`;
+        }
+        console.log(hasilAlgo);
+        short = hasilAlgo;
     }
 
     const token = req.headers?.authorization;
