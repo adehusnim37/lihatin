@@ -5,12 +5,14 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
 const QRCode = require('qrcode');
 const Base64 = require('../../../base64/base64')
+const {encode} = require("../../../base64/base64");
 
 module.exports = async (req, res) => {
     console.log(req.body);
     const schema = {
         url: 'url|empty:false',
         short: 'string|optional',
+        encodeurl: 'string|optional'
     }
 
     const validate = v.validate(req.body, schema);
@@ -49,11 +51,14 @@ module.exports = async (req, res) => {
     } else {
         hasil = Base64.encode(url)
         console.log(hasil)
+        decode = Base64.decode(hasil)
+        console.log(decode)
         for (var i = 0; i < 1; i++) {
-            var hasilAlgo = `${StringGen(Math.random() * (5 - 2) + 2)}`;
+            var hasilAlgo = `${StringGen(Math.random() * (5 - 1) + 1)}`;
         }
         console.log(hasilAlgo);
         short = hasilAlgo;
+        encodeurl = hasil
     }
 
     const token = req.headers?.authorization;
@@ -67,6 +72,7 @@ module.exports = async (req, res) => {
         url: url,
         short: short,
         user_id: userId,
+        encodeurl: encodeurl,
     });
 
     QRCode.toFile(`./public/images/qr/${link.id}.png`, `${process.env.BASE_URL}/${link.short}`, { type: 'png', errorCorrectionLevel: 'M', width: 300, margin: 1 });

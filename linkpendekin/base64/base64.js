@@ -1,5 +1,8 @@
+
+
 function encode(input) {
     var output = "";
+    var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-";
 
     let chr1, chr2, chr3, enc1, enc2, enc3, enc4;
 
@@ -30,16 +33,17 @@ function encode(input) {
 
         output =
             output +
-            this._keyStr.charAt(enc1) +
-            this._keyStr.charAt(enc2) +
-            this._keyStr.charAt(enc3) +
-            this._keyStr.charAt(enc4);
+            keyStr.charAt(enc1) +
+            keyStr.charAt(enc2) +
+            keyStr.charAt(enc3) +
+            keyStr.charAt(enc4);
     }
 
     return output;
 }
 
 function decode (input){
+    var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-";
     var output = "";
 
     var chr1, chr2, chr3;
@@ -51,13 +55,13 @@ function decode (input){
     input = input.replace(/[^A-Za-z0-9\/_\-]/g, "");
 
     while (i < input.length) {
-        enc1 = this._keyStr.indexOf(input.charAt(i++));
+        enc1 = keyStr.indexOf(input.charAt(i++));
 
-        enc2 = this._keyStr.indexOf(input.charAt(i++));
+        enc2 = keyStr.indexOf(input.charAt(i++));
 
-        enc3 = this._keyStr.indexOf(input.charAt(i++));
+        enc3 = keyStr.indexOf(input.charAt(i++));
 
-        enc4 = this._keyStr.indexOf(input.charAt(i++));
+        enc4 = keyStr.indexOf(input.charAt(i++));
 
         chr1 = (enc1 << 2) | (enc2 >> 4);
 
@@ -95,8 +99,6 @@ function decode (input){
 
 const Base64 = {
     // private property
-
-    _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-",
 
     // public method for encoding
 

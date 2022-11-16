@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   Link.init({
     user_id: DataTypes.INTEGER,
     url: DataTypes.STRING,
+    encodeurl : DataTypes.STRING,
     short: DataTypes.STRING,
     views: DataTypes.INTEGER
   }, {

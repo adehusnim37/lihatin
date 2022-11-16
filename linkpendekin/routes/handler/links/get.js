@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
 
     const links = await Link.findAll({
         where: { user_id: user_id },
-        attributes: ['id', 'url', 'short', 'views', 'createdAt'],
+        attributes: ['id', 'url', 'short', 'views', 'createdAt', 'encodeurl'],
         order: [['createdAt', 'DESC']],
     });
 
